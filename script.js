@@ -18,6 +18,13 @@ column_containers.forEach((column_container) => {
         column_container.appendChild(cell);
     }
 });
+
+const cells = document.querySelectorAll('.cell');
+cells.forEach((cell) => {
+    cell.addEventListener('mouseover', function(e) {
+        e.target.classList.add('shaded');
+    });
+});
 // each of those containers has 16 div children
     // set class = row for these
 
