@@ -15,4 +15,10 @@ div {
 
 .column {
     flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.cell {
+    flex: 1 1 auto;
 }

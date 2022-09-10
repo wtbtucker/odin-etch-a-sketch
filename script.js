@@ -8,6 +8,16 @@ for (let i = 0; i < 16; i++) {
     column.classList.add('column');
     container.appendChild(column);
 }
+
+
+const column_containers = document.querySelectorAll('.column');
+column_containers.forEach((column_container) => {
+    for (let j = 0; j < 16; j++) {
+        const cell = document.createElement('div');
+        cell.classList.add('cell');
+        column_container.appendChild(cell);
+    }
+});
 // each of those containers has 16 div children
     // set class = row for these
 
