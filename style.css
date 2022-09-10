@@ -1,0 +1,18 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    height: 100%;
+}
+
+div {
+    border-style: solid;
+}
+
+.column {
+    flex: 1 1 auto;
+}
