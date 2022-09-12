@@ -1,7 +1,5 @@
-// TODO: on mouseover add 10% black to the background color
 let page_size;
 const content = document.querySelector('.content');
-
 
 const button = document.querySelector('.btn');
 button.addEventListener('click', function(page_size) {
@@ -17,7 +15,11 @@ function add_cell_shader() {
     const cells = document.querySelectorAll('.cell');
     cells.forEach((cell) => {
         cell.addEventListener('mouseover', function(e) {
-            e.target.classList.add('shaded');
+            let shading = getComputedStyle(e.target).getPropertyValue("filter");
+            const re = /\((.+)\)/; // extract the value within parentheses from filter attribute
+            let brightness_value = shading.match(re)[1];
+            let new_brightness_value = brightness_value - 0.1;
+            e.target.style.filter = `brightness(${new_brightness_value})`;
         });
     });
 }
