@@ -1,5 +1,3 @@
-// TODO: clear columns and cells from the document
-
 // TODO: on mouseover add 10% black to the background color
 let page_size;
 const content = document.querySelector('.content');
@@ -11,15 +9,18 @@ button.addEventListener('click', function(page_size) {
         page_size = Number(prompt("Please enter page size"));
     } while (!(page_size <= 100 && page_size > 0))
     make_grid(page_size);
+    add_cell_shader();
+    return;
 });
 
-
-const cells = document.querySelectorAll('.cell');
-cells.forEach((cell) => {
-    cell.addEventListener('mouseover', function(e) {
-        e.target.classList.add('shaded');
+function add_cell_shader() {
+    const cells = document.querySelectorAll('.cell');
+    cells.forEach((cell) => {
+        cell.addEventListener('mouseover', function(e) {
+            e.target.classList.add('shaded');
+        });
     });
-});
+}
 
 function make_grid(page_size) {
     while (content.firstChild) {
@@ -39,4 +40,5 @@ function make_grid(page_size) {
             column_container.appendChild(cell);
         }
     });
+    return;
 }
