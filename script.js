@@ -1,23 +1,18 @@
-// TODO: create 16 x 16 square of divs inside of container div
-// createElement 16 containers within the main container
-    // set the class = column for these
+// TODO: clear columns and cells from the document
 
-const container = document.querySelector('.container');
-for (let i = 0; i < 16; i++) {
-    const column = document.createElement('div');
-    column.classList.add('column');
-    container.appendChild(column);
-}
+// TODO: on mouseover add 10% black to the background color
+let page_size;
+const content = document.querySelector('.content');
 
 
-const column_containers = document.querySelectorAll('.column');
-column_containers.forEach((column_container) => {
-    for (let j = 0; j < 16; j++) {
-        const cell = document.createElement('div');
-        cell.classList.add('cell');
-        column_container.appendChild(cell);
-    }
+const button = document.querySelector('.btn');
+button.addEventListener('click', function(page_size) {
+    do {
+        page_size = Number(prompt("Please enter page size"));
+    } while (!(page_size <= 100 && page_size > 0))
+    make_grid(page_size);
 });
+
 
 const cells = document.querySelectorAll('.cell');
 cells.forEach((cell) => {
@@ -25,9 +20,23 @@ cells.forEach((cell) => {
         e.target.classList.add('shaded');
     });
 });
-// each of those containers has 16 div children
-    // set class = row for these
 
-// CSS main div container
-    //
-    // flex-direction: column for these
+function make_grid(page_size) {
+    while (content.firstChild) {
+        content.removeChild(content.firstChild);
+    }
+    for (let i = 0; i < page_size; i++) {
+        const column = document.createElement('div');
+        column.classList.add('column');
+        content.appendChild(column);
+    }
+
+    const column_containers = document.querySelectorAll('.column');
+    column_containers.forEach((column_container) => {
+        for (let j = 0; j < page_size; j++) {
+            const cell = document.createElement('div');
+            cell.classList.add('cell');
+            column_container.appendChild(cell);
+        }
+    });
+}
